@@ -13,7 +13,7 @@ require('./src/cron/autoCancelOrders'); // ⬅️ Tambahkan ini
 app.use(express.json());
 app.use(
   cors({
-    origin: ['http://localhost:5173'],
+    origin: ['http://localhost:5173','https://ppm-rumah-hijau.vercel.app'],
     credentials: true,
   })
 );
