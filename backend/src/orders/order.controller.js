@@ -169,15 +169,20 @@ const getOrderById = async (req, res) => {
   }
 };
 
+// 取消订单
 const cancelOrderById = async (req, res) => {
   try {
+    // 获取订单ID
     const { id } = req.params;
 
+    // 根据订单ID查找订单
     const order = await Order.findById(id);
+    // 如果订单不存在，返回404错误
     if (!order) {
       return res.status(404).json({ message: 'Order tidak ditemukan' });
     }
 
+    // 如果订单状态已经是取消，返回400错误
     if (order.status === 'cancelled') {
       return res.status(400).json({ message: 'Order sudah dibatalkan' });
     }
